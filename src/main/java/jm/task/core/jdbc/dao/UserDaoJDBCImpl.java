@@ -28,24 +28,13 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() throws SQLException, ClassNotFoundException {
         Statement statement = connection.createStatement();
-        statement.executeUpdate("DROP TABLE IF EXISTS ex_jdbc.user");
+        statement.executeUpdate("DROP TABLE IF EXISTS user");
     }
 
     public void saveUser(String name, String lastName, byte age) throws SQLException {
             Statement statement = connection.createStatement();
             String sql = String.format("INSERT INTO ex_jdbc.user (`name`, `lastName`, `age`) VALUES (\"%s\", \"%s\", %d);", name, lastName, age);
             statement.executeUpdate(sql);
-//        Thread.sleep(5000);
-//            Statement statement2 = connection.createStatement();
-            //String sql2 = String.format("SELECT * FROM user WHERE name = \"%s\";", name);
-
-//            ResultSet resultSet = statement2.executeQuery(sql2);
-//            User user = new User();
-//            user.setId(resultSet.getLong(1));
-//            user.setName(resultSet.getString(2));
-//            user.setLastName(resultSet.getString(3));
-//            user.setAge(resultSet.getByte(4));
-        //System.out.println(user);
     }
 
     public void removeUserById(long id) throws SQLException {
@@ -66,7 +55,6 @@ public class UserDaoJDBCImpl implements UserDao {
             user.setAge(resultSet.getByte(4));
             list.add(user);
         }
-
         return list;
     }
 
