@@ -6,17 +6,17 @@ import java.sql.SQLException;
 
 public class Util {
 
-    private static final String userName = "****";
-    private static final String password = "****";
-    private static final String connectionURL = "jdbc:mysql://localhost:3306/ex_jdbc";
+    private static final String DB_USER = "****";
+    private static final String DB_PASS = "****";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/ex_jdbc";
 
     public static Connection getConnection() throws SQLException,
             ClassNotFoundException {
 
         Class.forName("com.mysql.jdbc.Driver");
 
-        return DriverManager.getConnection(connectionURL, userName,
-                password);
+        return DriverManager.getConnection(DB_URL, DB_USER,
+                DB_PASS);
     }
 
 }
